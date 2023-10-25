@@ -42,4 +42,15 @@ public class UserService {
 			throw new ObjectNotFoundException("Usuario nao existe");
 		}
 	}
+	public User update(User obj) {
+		findById(obj.getId());
+		User entity = findById(obj.getId());
+		updateData(entity, obj);
+		return repo.save(entity);
+		
+	}
+	public void updateData(User entity,User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+	}
 }
