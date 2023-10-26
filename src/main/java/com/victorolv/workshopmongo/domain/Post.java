@@ -7,82 +7,70 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.victorolv.workshopmongo.dto.AuthorDto;
 
 @Document
 public class Post implements Serializable {
 
-
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String id;
 	private Instant instant;
 	private String title;
 	private String body;
-	
-	private User author;
-	
-	
+
+	private AuthorDto author;
+
 	public Post() {
 		super();
 	}
 
-
-	public Post(String id, Instant instant, String title, String body,User author) {
+	public Post(String id, Instant instant, String title, String body, AuthorDto author) {
 		super();
 		this.id = id;
 		this.instant = instant;
 		this.title = title;
 		this.body = body;
-		this.author= author;
+		this.author = author;
 	}
-
 
 	public String getId() {
 		return id;
 	}
 
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
 
 	public Instant getInstant() {
 		return instant;
 	}
 
-
 	public void setInstant(Instant instant) {
 		this.instant = instant;
 	}
-
 
 	public String getTitle() {
 		return title;
 	}
 
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-
-	public String getBody() {
-		return body;
+	public AuthorDto getAuthor() {
+		return author;
 	}
 
-
-	public void setBody(String body) {
-		this.body = body;
+	public void setAuthor(AuthorDto author) {
+		this.author = author;
 	}
-
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -95,8 +83,5 @@ public class Post implements Serializable {
 		Post other = (Post) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
-	
+
 }
