@@ -1,12 +1,16 @@
 package com.victorolv.workshopmongo.config;
 
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import com.victorolv.workshopmongo.domain.Post;
 import com.victorolv.workshopmongo.domain.User;
+import com.victorolv.workshopmongo.repository.PostRepository;
 import com.victorolv.workshopmongo.repository.UserRepository;
 
 
@@ -15,11 +19,16 @@ public class Instantiation implements CommandLineRunner{
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private PostRepository postRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+
+        
 		userRepository.deleteAll();
+		postRepository.deleteAll();
 		
 		User maria = new User(null, "Maria Brown", "maria@gmail.com");
 		User alex = new User(null, "Alex Green", "alex@gmail.com");
@@ -27,6 +36,12 @@ public class Instantiation implements CommandLineRunner{
 		
 		userRepository.saveAll(Arrays.asList(maria,alex,bob));
 		
+		Post po1 = new Post(null,Instant.now(),"Viagem","Primeira viagem com a familia",maria);
+		Post po2 = new Post(null,Instant.now(),"Viagem","Segunda viagem com a familia",maria);
+		
+		postRepository.saveAll(Arrays.asList(po1,po2));
+		
+		System.out.println(po1);
 	}
 
 }
