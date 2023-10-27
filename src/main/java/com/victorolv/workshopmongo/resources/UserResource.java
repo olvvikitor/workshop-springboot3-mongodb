@@ -18,7 +18,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.victorolv.workshopmongo.domain.Post;
 import com.victorolv.workshopmongo.domain.User;
-import com.victorolv.workshopmongo.dto.AuthorDto;
 import com.victorolv.workshopmongo.dto.UserDTO;
 import com.victorolv.workshopmongo.services.UserService;
 
