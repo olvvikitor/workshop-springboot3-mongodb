@@ -1,10 +1,8 @@
 package com.victorolv.workshopmongo.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.Date;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 
 public class CommentDto implements Serializable {
@@ -12,7 +10,7 @@ public class CommentDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String text;
-	private Instant instant;
+	private Date instant;
 
 	
 	private AuthorDto authorDto;
@@ -21,7 +19,7 @@ public class CommentDto implements Serializable {
 		super();
 	}
 
-	public CommentDto(String text, Instant instant,AuthorDto authoDto) {
+	public CommentDto(String text, Date instant,AuthorDto authoDto) {
 		super();
 		this.text = text;
 		this.instant = instant;
@@ -33,14 +31,13 @@ public class CommentDto implements Serializable {
 	}
 
 	public void setText(String text) {
-		this.text = text;
 	}
 
-	public Instant getInstant() {
+	public Date getDate() {
 		return instant;
 	}
 
-	public void setInstant(Instant instant) {
+	public void setDate(Date instant) {
 		this.instant = instant;
 	}
 

@@ -1,13 +1,12 @@
 package com.victorolv.workshopmongo.domain;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.victorolv.workshopmongo.dto.AuthorDto;
@@ -20,7 +19,7 @@ public class Post implements Serializable {
 
 	@Id
 	private String id;
-	private Instant instant;
+	private Date instant;
 	private String title;
 	private String body;
 
@@ -34,7 +33,7 @@ public class Post implements Serializable {
 		super();
 	}
 
-	public Post(String id, Instant instant, String title, String body, AuthorDto author) {
+	public Post(String id, Date instant, String title, String body, AuthorDto author) {
 		super();
 		this.id = id;
 		this.instant = instant;
@@ -51,11 +50,11 @@ public class Post implements Serializable {
 		this.id = id;
 	}
 
-	public Instant getInstant() {
+	public Date getDate() {
 		return instant;
 	}
 
-	public void setInstant(Instant instant) {
+	public void setDate(Date instant) {
 		this.instant = instant;
 	}
 
