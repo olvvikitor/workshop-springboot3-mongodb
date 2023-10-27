@@ -2,14 +2,18 @@ package com.victorolv.workshopmongo.domain;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.victorolv.workshopmongo.dto.AuthorDto;
+import com.victorolv.workshopmongo.dto.CommentDto;
 
-@Document()
+@Document
 public class Post implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -20,7 +24,11 @@ public class Post implements Serializable {
 	private String title;
 	private String body;
 
+	
 	private AuthorDto author;
+	
+	private List<CommentDto> coments= new ArrayList<>();
+	
 
 	public Post() {
 		super();
@@ -72,6 +80,14 @@ public class Post implements Serializable {
 		return Objects.hash(id);
 	}
 
+	public List<CommentDto> getComents() {
+		return coments;
+	}
+	
+	public void setComents(List<CommentDto> coments) {
+		this.coments = coments;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -83,5 +99,8 @@ public class Post implements Serializable {
 		Post other = (Post) obj;
 		return Objects.equals(id, other.id);
 	}
+
+
+
 
 }
